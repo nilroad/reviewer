@@ -1,0 +1,24 @@
+begin;
+
+drop table if exists outbox_events;
+drop table if exists outbox_event_types;
+drop table if exists user_shopping_list_products;
+drop table if exists user_shopping_lists;
+drop table if exists deals;
+drop table if exists campaigns;
+drop table if exists branch_products;
+drop table if exists products;
+drop table if exists brands;
+drop table if exists categories;
+drop table if exists media_metadata;
+drop table if exists media;
+drop table if exists branch_ad_groups;
+drop table if exists ads;
+drop table if exists ad_groups;
+drop table if exists users;
+drop table if exists branches;
+drop table if exists merchants;
+drop table if exists cities;
+drop table if exists provinces;
+drop table if exists user_cards;
+commit; 

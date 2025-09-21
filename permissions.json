@@ -1,0 +1,196 @@
+{
+  "categories": [
+    {
+      "name": "users",
+      "title": "کاربران",
+      "permissions": [
+        {
+          "name": "user-wallets",
+          "title": "کیف پول یک کاربر",
+          "http_method": "GET",
+          "route": "/v1/admin/users/:user_id/wallets"
+        },
+        {
+          "name": "user-vouchers",
+          "title": "کوپن های یک کاربر",
+          "http_method": "GET",
+          "route": "/v1/admin/users/:user_id/vouchers"
+        },
+        {
+          "name": "user-voucher-by-number",
+          "title": "جزئیات یک کوپن کاربر با شناسه",
+          "http_method": "GET",
+          "route": "/v1/admin/users/:user_id/vouchers/:voucher_number"
+        },
+        {
+          "name": "user-voucher-toggle-active",
+          "title": "فعال یا غیر فعال کردن یک کوپن کاربر",
+          "http_method": "PATCH",
+          "route": "/v1/admin/users/:user_id/vouchers/:voucher_number/toggle-active"
+        }
+      ]
+    },
+    {
+      "name": "voucher-rule-types",
+      "title": "تمپلیت های کوپن",
+      "permissions": [
+        {
+          "name": "voucher-rule-type-create",
+          "title": "ایجاد تمپلیت کوپن",
+          "http_method": "POST",
+          "route": "/v1/admin/voucher-rule-types"
+        },
+        {
+          "name": "voucher-rule-type-list",
+          "title": "دریافت لیست تمپلیت کوپن",
+          "http_method": "GET",
+          "route": "/v1/admin/voucher-rule-types"
+        },
+        {
+          "name": "voucher-rule-type-by-number",
+          "title": "دریافت تمپلیت کوپن با شناسه",
+          "http_method": "GET",
+          "route": "/v1/admin/voucher-rule-types/:id"
+        },
+        {
+          "name": "voucher-rule-type-update",
+          "title": "ویرایش تمپلیت کوپن",
+          "http_method": "PATCH",
+          "route": "/v1/admin/voucher-rule-types/:voucher_type_number"
+        }
+      ]
+    },
+    {
+      "name": "vouchers",
+      "title": "کوپن",
+      "permissions": [
+        {
+          "name": "voucher-assign",
+          "title": "تخصیص کوپن",
+          "http_method": "POST",
+          "route": "/v1/admin/vouchers/assign"
+        },
+        {
+          "name": "voucher-assign-by-csv",
+          "title": "تخصیص کوپن با استفاده از فایل CSV",
+          "http_method": "POST",
+          "route": "/v1/admin/vouchers/csv/assign"
+        }
+      ]
+    },
+    {
+      "name": "provinces",
+      "title": "استان‌ها",
+      "permissions": [
+        {
+          "name": "province-list",
+          "title": "لیست استان‌ها",
+          "http_method": "GET",
+          "route": "/v1/admin/provinces"
+        },
+        {
+          "name": "province-cities",
+          "title": "لیست شهرها",
+          "http_method": "GET",
+          "route": "/v1/admin/provinces/cities"
+        }
+      ]
+    },
+    {
+      "name": "branches",
+      "title": "شعبه‌ها",
+      "permissions": [
+        {
+          "name": "branch-list",
+          "title": "لیست شعبه‌ها",
+          "http_method": "GET",
+          "route": "/v1/admin/branches"
+        }
+      ]
+    },
+    {
+      "name": "ad-groups",
+      "title": "گروه‌های آگهی",
+      "permissions": [
+        {
+          "name": "get-ad-group-list",
+          "title": "لیست گروه‌های آگهی",
+          "http_method": "GET",
+          "route": "/v1/admin/ad-groups"
+        },
+        {
+          "name": "create-ad-group",
+          "title": "ایجاد گروه آگهی",
+          "http_method": "POST",
+          "route": "/v1/admin/ad-groups"
+        },
+        {
+          "name": "toggle-ad-group-active",
+          "title": "فعال یا غیر فعال کردن گروه آگهی",
+          "http_method": "PATCH",
+          "route": "/v1/admin/ad-groups/:id/toggle-active"
+        },
+        {
+          "name": "delete-ad-group",
+          "title": "حذف گروه آگهی",
+          "http_method": "DELETE",
+          "route": "/v1/admin/ad-groups/:id"
+        },
+        {
+          "name": "get-ad-group-by-id",
+          "title": "دریافت گروه آگهی با شناسه",
+          "http_method": "GET",
+          "route": "/v1/admin/ad-groups/:id"
+        },
+        {
+          "name": "toggle-ad-active",
+          "title": "فعال یا غیر فعال کردن آگهی",
+          "http_method": "PATCH",
+          "route": "/v1/admin/ad-groups/ads/:id/toggle-active"
+        },
+        {
+          "name": "delete-ad",
+          "title": "حذف آگهی",
+          "http_method": "DELETE",
+          "route": "/v1/admin/ad-groups/ads/:id"
+        },
+        {
+          "name": "update-ad-group",
+          "title": "ویرایش آگهی",
+          "http_method": "PUT",
+          "route": "/v1/admin/ad-groups/:id"
+        },
+        {
+          "name": "get-ad-group-configs",
+          "title": "دریافت پیکربندی گروه آگهی",
+          "http_method": "GET",
+          "route": "/v1/admin/ad-groups/configs"
+        }
+      ]
+    },
+    {
+      "name": "categories",
+      "title": "دسته‌بندی‌ها",
+      "permissions": [
+        {
+          "name": "get-category-list",
+          "title": "لیست دسته‌بندی‌ها",
+          "http_method": "GET",
+          "route": "/v1/admin/categories"
+        }
+      ]
+    },
+    {
+      "name": "products",
+      "title": "محصولات",
+      "permissions": [
+        {
+          "name": "get-product-list",
+          "title": "لیست محصولات",
+          "http_method": "GET",
+          "route": "/v1/admin/products"
+        }
+      ]
+    }
+  ]
+}

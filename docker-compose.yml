@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+
+  redis:
+    image: basereg.oceantim.com/base/devops/redis:7.4-alpine
+    platform: ${DOCKER_PLATFORM:-linux/amd64}
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${REDIS_LOCAL_HOST:-127.0.0.1}:${REDIS_LOCAL_PORT:-6379}:6379"
+    restart: 'on-failure'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 15s
+      timeout: 30s
+      retries: 10
+
+volumes:
+  redis-data:
