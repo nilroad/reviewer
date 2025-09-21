@@ -20,11 +20,11 @@ import (
 func (s *Server) SetupAPIRoutes(
 	errRespM essmiddleware.HttpErrorResponse,
 	captureSentry essmiddleware.CaptureSentry,
-	health healthcheck.HealthHandler,
+	_ healthcheck.HealthHandler,
 	mergeRequestHandler *mergereq.Handler,
 ) {
 	r := s.engine
-	r.Use(errRespM.Handle(), captureSentry.CaptureSentry(), health.HealthCheck)
+	r.Use(errRespM.Handle(), captureSentry.CaptureSentry())
 	{
 		intV1 := r.Group("internal/v1")
 		intV1.POST("merge-requests", mergeRequestHandler.MergeRequestWebhook)

@@ -11,10 +11,6 @@ import (
 
 type dependencyName string
 
-const (
-	dependencyNameMySQL dependencyName = "mysql"
-)
-
 func (a dependencyName) String() string {
 	return string(a)
 }
@@ -35,7 +31,5 @@ func NewDependency(
 }
 func (d *Dependency) Get(_ context.Context) map[string]healthcheck.Checker {
 
-	return map[string]healthcheck.Checker{
-		dependencyNameMySQL.String(): healthcheck.NewMySQLHealthCheck(d.mysqlConfig, d.logger),
-	}
+	return map[string]healthcheck.Checker{}
 }

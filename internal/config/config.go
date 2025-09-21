@@ -30,7 +30,10 @@ type Config struct {
 	Tz             string
 	TrustedProxies []string
 	AsynqMon       AsynqMon
+	ReviewWorker   AsynqWorker
+	Gitlab         Gitlab
 }
+
 type Database struct {
 	MySQL      mysql.Config
 	Redis      redis.Config
@@ -86,4 +89,9 @@ type OKCSSync struct {
 	BranchSyncTimes        []string
 	ProductSyncTimes       []string
 	BranchProductSyncTimes []string
+}
+
+type Gitlab struct {
+	BaseURL string
+	APIKey  string
 }

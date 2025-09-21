@@ -16,6 +16,8 @@ git.oceantim.com/backend/packages/golang/go-response-formatter v1.1.9 h1:JjO3wOL
 git.oceantim.com/backend/packages/golang/go-response-formatter v1.1.9/go.mod h1:Sm5p7k+2EQdLBmZcCQP7DSKxs/jN/kJ5t85BjsW2DEo=
 git.oceantim.com/backend/packages/golang/go-sentry v1.2.5 h1:klvtQogk4qJ1/ItHmaREQuPJb8FCVbY7TLzG6N1CoBY=
 git.oceantim.com/backend/packages/golang/go-sentry v1.2.5/go.mod h1:tHpyPxrJcugX1DNWyUzhy52aOvxdbTStZYijG4A9dYc=
+git.oceantim.com/backend/packages/golang/go-utils v1.2.3 h1:hpa6bAdTCui4LkBRI8pqoibxtxK59G73TMgEe14WG8k=
+git.oceantim.com/backend/packages/golang/go-utils v1.2.3/go.mod h1:EPgRV7Kgtes2nXvRIn9AkdzyOe946hkRHzEd2hnywOc=
 git.oceantim.com/backend/packages/golang/messaging/v2 v2.3.16 h1:NtB52Dd/B7dVNtFKVQH4040hwql/hCbxVHPsJ49TIlE=
 git.oceantim.com/backend/packages/golang/messaging/v2 v2.3.16/go.mod h1:Xn+9NGGRTgQ+z0C2bzrM0TCheSa7TbybiFQwDLkZr6I=
 github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161 h1:L/gRVlceqvL25UVaW/CKtUDjefjrs0SPonmDGUVOYP0=

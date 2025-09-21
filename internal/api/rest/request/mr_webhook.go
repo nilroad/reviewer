@@ -12,8 +12,8 @@ type MRWebhook struct {
 
 func (r *MRWebhook) PrepareForValidation() {}
 
-func (r *MRWebhook) ToDomain() *domain.MergeRequestWebhook {
-	return &domain.MergeRequestWebhook{
+func (r *MRWebhook) ToDomain() domain.MergeRequestWebhook {
+	return domain.MergeRequestWebhook{
 		MergeRequestIID:   r.MergeRequestIID,
 		ProjectID:         r.ProjectID,
 		URL:               r.URL,

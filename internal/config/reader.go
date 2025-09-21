@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 
-	"git.oceantim.com/backend/packages/golang/database/mysql"
 	"git.oceantim.com/backend/packages/golang/database/redis"
 	log "git.oceantim.com/backend/packages/golang/go-logger"
 	"git.oceantim.com/backend/packages/golang/go-sentry"
@@ -27,15 +26,6 @@ func Load() (*Config, error) {
 	appEnv := loadString("APP_ENV")
 	debug := loadBool("APP_DEBUG")
 
-	mysqlConfig := mysql.Config{
-		Host:         loadString("DATABASE_MYSQL_HOST"),
-		Port:         loadInt("DATABASE_MYSQL_PORT"),
-		Username:     loadString("DATABASE_MYSQL_USER"),
-		Password:     loadString("DATABASE_MYSQL_PASSWORD"),
-		DatabaseName: loadString("DATABASE_MYSQL_NAME"),
-		Timezone:     loadString("TZ"),
-	}
-
 	ASYNQRedisConf := &redis.Config{
 		Host:     loadString("DATABASE_ASYNQ_REDIS_HOST"),
 		Port:     loadString("DATABASE_ASYNQ_REDIS_PORT"),
@@ -50,7 +40,6 @@ func Load() (*Config, error) {
 		Locale:      loadString("LOCALE"),
 		HealthToken: loadString("HEALTH_TOKEN"),
 		Database: Database{
-			MySQL:      mysqlConfig,
 			AsynqRedis: ASYNQRedisConf,
 		},
 		HTTP: HTTP{
@@ -74,5 +63,14 @@ func Load() (*Config, error) {
 		},
 		Tz:             loadString("TZ"),
 		TrustedProxies: loadStringSlice("TRUSTED_PROXIES"),
+		ReviewWorker: AsynqWorker{
+			AsynqWorkerCount:       loadInt("ASYNQ_REVIEW_WORKER_COUNT"),
+			AsynqMaxRetry:          loadInt("ASYNQ_REVIEW_WORKER_RETRY"),
+			AsynqJobProcessTimeout: loadDuration("ASYNQ_REVIEW_WORKER_TIMEOUT"),
+		},
+		Gitlab: Gitlab{
+			BaseURL: loadString("GITLAB_BASE_URL"),
+			APIKey:  loadString("GITLAB_API_KEY"),
+		},
 	}, nil
 }

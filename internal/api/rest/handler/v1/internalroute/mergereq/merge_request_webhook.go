@@ -24,7 +24,7 @@ func (r *Handler) MergeRequestWebhook(c *gin.Context) {
 		return
 	}
 
-	err = r.reviewService.Prepare(c, body.MergeRequestIID, body.ProjectID, body.CurrentCommitHash, body.NewCommitHash)
+	err = r.reviewService.Prepare(c, body.ToDomain())
 	if err != nil {
 		return
 	}
