@@ -1,0 +1,75 @@
+include:
+  - project: 'infra/gitlab-base-pipelines'
+    ref: 'main'
+    file: '/.gitlab-ci-base-golang-okcs.yml'
+
+#TEST
+open_api:
+  extends: .open-api
+
+rbac_permission_validator:
+  extends: .rbac-permission-validator
+
+# BUILD DOCS
+dev_build_api:
+  extends: .dev-build-api
+
+# OKCS DEV
+okcs_dev_build_permissions:
+  extends: .okcs-dev-build-permissions
+
+okcs_dev_deploy_all:
+  stage: okcs_manual_dev
+  image:
+    name: ${OKCS_IMAGE_KUBCTL}
+    entrypoint: [""]
+  tags:
+    - okcs-dev-deploy
+  variables:
+    APP_ENV: 'develop'
+  environment:
+    name: develop
+  script:
+    - !reference [.okcs-dev-deploy-api]
+    - !reference [.okcs-dev-deploy-consumer]
+    - !reference [.okcs-dev-deploy-asynqmon]
+  only:
+    - merge_requests
+  needs:
+    - job: lint
+      optional: true
+    - job: okcs_dev_build_manual
+      optional: true
+    - job: okcs_dev_automatic
+      optional: true
+
+okcs_deploy_all:
+  stage: deploy_dev
+  image:
+    name: ${OKCS_IMAGE_KUBCTL}
+    entrypoint: [""]
+  tags:
+    - okcs-dev-deploy
+  variables:
+    APP_ENV: 'develop'
+  environment:
+    name: develop
+  script:
+    - !reference [.okcs-dev-deploy-api]
+    - !reference [.okcs-dev-deploy-consumer]
+    - !reference [.okcs-dev-deploy-asynqmon]
+  only:
+    - develop
+  needs:
+    - job: okcs_dev_automatic
+      optional: true
+
+# OKCS PROD 
+okcs-prod_api:
+  extends: .okcs-prod-deploy-api
+
+okcs-prod_consumer:
+  extends: .okcs-prod-deploy-consumer
+
+okcs-prod_asynqmon:
+  extends: .okcs-prod-deploy-asynqmon
